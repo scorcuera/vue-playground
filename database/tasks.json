@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "name": "practice JS",
+      "done": false,
+      "difficulty": "low",
+      "id": 1
+    },
+    {
+      "name": "practice Git",
+      "done": false,
+      "difficulty": "mid",
+      "id": 2
+    },
+    {
+      "name": "play guitar",
+      "done": false,
+      "difficulty": "mid",
+      "id": 3
+    }
+  ]
+}
