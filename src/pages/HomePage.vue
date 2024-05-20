@@ -11,7 +11,7 @@ export default {
     },
     methods: {
         async fetchTasks() {
-            let response = await fetch(" http://localhost:3000/tasks");
+            let response = await fetch("https://task-manager-api-two-flame.vercel.app/tasks");
             let tasks = await response.json();
             this.tasks = tasks;
         }
