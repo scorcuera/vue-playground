@@ -1,26 +1,23 @@
 <script>
+import { mapActions, mapState } from 'pinia'
+import { useTaskStore } from '@/stores/TaskStore.js'
+
 export default {
-    data() {
-        return {
-            tasks: []
-        }
-    },
     created() {
-        // ni bien cargues el componente, ejecuta el fetch de tareas
         this.fetchTasks();
     },
+    computed: {
+        ...mapState(useTaskStore, ['tasks'])
+    },
     methods: {
-        async fetchTasks() {
-            let response = await fetch("https://task-manager-api-two-flame.vercel.app/tasks");
-            let tasks = await response.json();
-            this.tasks = tasks;
-        }
+        ...mapActions(useTaskStore, ['fetchTasks'])
     }
 }
 </script>
 
 <template>
     <h1>This is the Home page</h1>
+    <!-- <button @click="fetchTasks">Load tasks</button> -->
     <div v-for="task in tasks">
         <p>{{ task.name }}</p>
         <router-link :to="`task/${task.id}`">See details</router-link>

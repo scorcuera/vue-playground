@@ -1,19 +1,16 @@
 <script>
+import { mapState, mapActions } from 'pinia'
+import { useTaskStore } from '@/stores/TaskStore.js'
+
 export default {
-    data() {
-        return {
-            task: {}
-        }
-    },
     created() {
-        this.fetchTask();
+        this.fetchTask(this.$route.params.id);
+    },
+    computed: {
+        ...mapState(useTaskStore, ['task'])
     },
     methods: {
-        async fetchTask() {
-            let response = await fetch(`https://task-manager-api-two-flame.vercel.app/tasks/${this.$route.params.id}`);
-            let task = await response.json();
-            this.task = task;
-        }
+        ...mapActions(useTaskStore, ['fetchTask'])
     }
 }
 </script>
